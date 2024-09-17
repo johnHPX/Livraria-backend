@@ -13,7 +13,7 @@ public class ConexaoBD {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/biblioteca";
-            conn = DriverManager.getConnection(url, "root", "832004");
+            conn = DriverManager.getConnection(url, "root", "Roberts2004@");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver JDBC não encontrado: " + e.getMessage());
         } catch (SQLException e) {
