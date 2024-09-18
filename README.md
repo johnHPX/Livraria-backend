@@ -12,7 +12,7 @@ nome, CPF, endereço e data de nascimento. Além disso, para que o
 usuário possa alugar um livro, é imprescindível que ele não tenha
 nenhum livro pendente para devolução, ou seja, é necessário ter
 devolvido todos os livros antes do prazo de empréstimo expirar.
-Para ocorrer a operação de empréstimo, é imprescindível que um
+Para ocorrer a operação de empréstimo, é preciso que um
 funcionário a execute. Cada funcionário possui em seu cadastro, o
 nome, CPF, senha, data de nascimento e um endereço. A operação é
 denominada locação e envolve o funcionário, o usuário e a edição do
