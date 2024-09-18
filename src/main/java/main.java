@@ -1,4 +1,4 @@
-import model.ConexaoBD;
+import repository.ConexaoBD;
 
 public class main {
 
