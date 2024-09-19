@@ -10,6 +10,15 @@ public class Usuario {
     private int qtdLivros;
     private boolean estaDevendo;
 
+    public Usuario(String nome, String cpf, String endereço, String dataNasc, int qtdLivros, boolean estaDevendo) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereço = endereço;
+        this.dataNasc = dataNasc;
+        this.qtdLivros = qtdLivros;
+        this.estaDevendo = estaDevendo;
+    }
+
     public int getId() {
         return id;
     }

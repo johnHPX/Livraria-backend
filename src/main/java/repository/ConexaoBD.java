@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class ConexaoBD {
 
-    public static Connection conn;
+    public Connection conn;
 
-    public static void connect(){
+    public void connect(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/biblioteca_poo";
@@ -21,7 +21,7 @@ public class ConexaoBD {
         }
     }
 
-    public static boolean closeConnection() {
+    public boolean closeConnection() {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
