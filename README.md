@@ -1,9 +1,6 @@
 # ProjetoPOO
 Um projeto para a disciplina de POO1 do curso de Sistemas de informação do IFCE Campus Crato.
 
-<<<<<<< HEAD
-<img src="https://github.com/johnHPX/ProjetoPOO/blob/main/database/livraria_logico.png" width="100%" /> 
-=======
 <img src="./database/livraria_logico.png">
 
 <h2>Problemática: Livraria </h2> 
@@ -32,4 +29,3 @@ pode ter várias edições por diferentes editoras.
 Um autor pode escrever diversos livros individualmente e também
 participar de várias colaborações literárias com outros autores. Cada
 autor tem seu nome, sua biografia e sua data de nascimento. </p>
->>>>>>> 3cc79165da9abcdbee56c56a26408ad5cc483d6a
