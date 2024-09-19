@@ -1,7 +1,7 @@
 # ProjetoPOO
 Um projeto para a disciplina de POO1 do curso de Sistemas de informação do IFCE Campus Crato.
 
-<img src="./database/livraria_logico.png">
+<img src="docs/livraria_logico.png">
 
 <h2>Problemática: Livraria </h2> 
 <p>Uma livraria precisa desenvolver um sistema para agilizar o
