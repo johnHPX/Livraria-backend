@@ -1,3 +1,4 @@
+use biblioteca;
 CREATE TABLE IF NOT EXISTS usuario (
 
     ID INT PRIMARY KEY AUTO_INCREMENT,
