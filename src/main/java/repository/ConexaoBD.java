@@ -1,4 +1,4 @@
-package model;
+package repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +19,9 @@ public class ConexaoBD {
         } catch (SQLException e) {
             System.out.println("Erro ao conectar com o banco de dados: " + e.getMessage());
         }
+        finally {
+        System.out.println("SUCESSO                ");
+    }
     }
 
     public static boolean closeConnection() {
