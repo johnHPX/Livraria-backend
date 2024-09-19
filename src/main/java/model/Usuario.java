@@ -8,15 +8,15 @@ public class Usuario {
     private String endereço;
     private String dataNasc;
     private int qtdLivros;
-    private boolean estaDevendo;
+    private boolean devendo;
 
-    public Usuario(String nome, String cpf, String endereço, String dataNasc, int qtdLivros, boolean estaDevendo) {
+    public Usuario(String nome, String cpf, String endereço, String dataNasc, int qtdLivros, boolean devendo) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereço = endereço;
         this.dataNasc = dataNasc;
         this.qtdLivros = qtdLivros;
-        this.estaDevendo = estaDevendo;
+        this.devendo = devendo;
     }
 
     public int getId() {
@@ -67,11 +67,11 @@ public class Usuario {
         this.qtdLivros = qtdLivros;
     }
 
-    public boolean isEstaDevendo() {
-        return estaDevendo;
+    public boolean isDevendo() {
+        return devendo;
     }
 
-    public void setEstaDevendo(boolean estaDevendo) {
-        this.estaDevendo = estaDevendo;
+    public void setDevendo(boolean devendo) {
+        this.devendo = devendo;
     }
 }

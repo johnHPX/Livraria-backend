@@ -17,24 +17,24 @@ public class UsuarioRepository {
             String sql = "INSERT INTO usuario (NOME, CPF, ENDERECO, DATA_NASC, QTD_LIVROS, ESTA_DEVENDO) VALUES (?,?,?,?,?,?)";
             ConexaoBD conexao = new ConexaoBD();
 
-            conexao.connect();
+            conexao.connectar();
 
             PreparedStatement pstmt = conexao.conn.prepareStatement(sql);
             pstmt.setString(1, novoUsuario.getNome());
             pstmt.setString(2, novoUsuario.getCpf());
             pstmt.setString(3, novoUsuario.getEndereço());
 
-            // Convetendo string para Date
+            // Conveting string to Date
             LocalDate localDate = LocalDate.parse(novoUsuario.getDataNasc(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
             Date sqlDate = Date.valueOf(localDate);
 
             pstmt.setDate(4, sqlDate);
             pstmt.setInt(5, novoUsuario.getQtdLivros());
-            pstmt.setBoolean(6, novoUsuario.isEstaDevendo());
+            pstmt.setBoolean(6, novoUsuario.isDevendo());
             pstmt.executeUpdate();
 
             pstmt.close();
-            conexao.closeConnection();
+            conexao.fecharConexao();
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -46,7 +46,6 @@ public class UsuarioRepository {
             this.criarUsuario(usuario);
         }
     }
-
 
 
 }
