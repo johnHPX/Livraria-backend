@@ -1,6 +1,7 @@
 package repository;
 
 import model.Usuario;
+import util.DatasFormatadas;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -10,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class UsuarioRepository {
+
+    DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
 
     public void criarUsuario(Usuario novoUsuario){
         try {
@@ -24,7 +27,7 @@ public class UsuarioRepository {
             pstmt.setString(3, novoUsuario.getEndereço());
 
             // Conveting string to Date
-            LocalDate localDate = LocalDate.parse(novoUsuario.getDataNasc(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            LocalDate localDate = LocalDate.parse(novoUsuario.getDataNasc(), DateTimeFormatter.ofPattern(dataUSA.getValor()));
             Date sqlDate = Date.valueOf(localDate);
 
             pstmt.setDate(4, sqlDate);
@@ -58,7 +61,7 @@ public class UsuarioRepository {
             pstmt.setString(3, usuario.getEndereço());
 
             // Conveting string to Date
-            LocalDate localDate = LocalDate.parse(usuario.getDataNasc(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            LocalDate localDate = LocalDate.parse(usuario.getDataNasc(), DateTimeFormatter.ofPattern(dataUSA.getValor()));
             Date sqlDate = Date.valueOf(localDate);
 
             pstmt.setDate(4, sqlDate);
@@ -110,7 +113,8 @@ public class UsuarioRepository {
                 u.setCpf(rs.getString("CPF"));
                 u.setEndereço(rs.getString("ENDERECO"));
 
-                DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                // conveter de string para date
+                DateFormat df = new SimpleDateFormat(dataUSA.getValor());
                 String dataNasc = df.format(rs.getDate("DATA_NASC"));
 
                 u.setDataNasc(dataNasc);
