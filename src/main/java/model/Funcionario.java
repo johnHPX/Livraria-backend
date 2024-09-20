@@ -20,6 +20,17 @@ public class Funcionario {
     /**
      * @return the id
      */
+    
+    
+    public Funcionario(int id, String nome, String cpf, String senha, String data_nasc, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.data_nasc = data_nasc;
+        this.endereco = endereco;
+    }
+
     public int getId() {
         return id;
     }
