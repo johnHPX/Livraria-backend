@@ -22,8 +22,7 @@ public class Funcionario {
      */
     
     
-    public Funcionario(int id, String nome, String cpf, String senha, String data_nasc, String endereco) {
-        this.id = id;
+    public Funcionario(String nome, String cpf, String senha, String data_nasc, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
