@@ -21,7 +21,7 @@ public class funcionarioRepository {
         String sql = "insert into FUNCIONARIO(nome, cpf, seSQnha, data_nasc, endereco) values(?, ?, ?, ?, ?)";
         
         
-       PreparedStatement pstmt = conexao.conn.PrepareStatement(sql);
+       PreparedStatement pstmt = conexao.conn.prepareStatement(sql);
        pstmt.setString(1, funcionario.getNome());
        pstmt.setString(2, funcionario.getCpf());
        pstmt.setString(3, funcionario.getSenha());
@@ -32,6 +32,7 @@ public class funcionarioRepository {
     catch (SQLException e) {
         System.out.print(e);
     }
+    
     
     
           

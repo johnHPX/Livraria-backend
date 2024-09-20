@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import static util.DatasFormatadas.PADRAO_USA;
 
 public class UsuarioRepository {
 
@@ -78,7 +79,16 @@ public class UsuarioRepository {
         }
 
     }
-
+    public Date converteData(String data_nao_formatada) {
+        ConexaoBD conexao = new ConexaoBD();
+        conexao.connectar();
+        LocalDate localDate = LocalDate.parse(data_nao_formatada, DateTimeFormatter.ofPattern(PADRAO_USA.getValor()));
+        System.out.println("LocalDate: " + localDate );
+            Date sqlData = Date.valueOf(localDate);
+            System.out.println("Date: " +  sqlData );
+            conexao.fecharConexao();
+            return sqlData;
+    }
     public void removerUsuario(int id){
         ConexaoBD conexaoDB = new ConexaoBD();
         try{

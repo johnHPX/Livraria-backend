@@ -1,9 +1,11 @@
 import model.Usuario;
 import repository.UsuarioRepository;
+import util.DatasFormatadas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TestUsuario {
 
@@ -71,5 +73,14 @@ public class TestUsuario {
 
         ur.criarVariosUsuarios(us);
         System.out.println("Sucesso!");
+    }
+    
+    @Test
+    public void TestConverteData() {
+        UsuarioRepository dt = new UsuarioRepository();
+        
+        Date nasc = dt.converteData("15/01/2004");
+        System.out.println(nasc);
+        
     }
 }
