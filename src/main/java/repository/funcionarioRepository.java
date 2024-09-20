@@ -6,7 +6,7 @@ package repository;
 
 import java.sql.PreparedStatement;
 import model.Funcionario;
-
+import java.sql.*;
 
 /**
  *
@@ -15,15 +15,26 @@ import model.Funcionario;
 public class funcionarioRepository {
     
     public void criarFuncionario(Funcionario funcionario) {
+    try {    
+        ConexaoBD conexao = new ConexaoBD();
+        conexao.connectar();
+        String sql = "insert into FUNCIONARIO(nome, cpf, seSQnha, data_nasc, endereco) values(?, ?, ?, ?, ?)";
         
+        
+       PreparedStatement pstmt = conexao.conn.PrepareStatement(sql);
+       pstmt.setString(1, funcionario.getNome());
+       pstmt.setString(2, funcionario.getCpf());
+       pstmt.setString(3, funcionario.getSenha());
+       pstmt.setString(4, funcionario.getData_nasc());
+       pstmt.setString(5, funcionario.getEndereco());
+       pstmt.executeUpdate();
+    }       
+    catch (SQLException e) {
+        System.out.print(e);
+    }
     
-    //ConexaoBD.conn.connect();
-    String sql = "insert into FUNCIONARIO(nome, cpf, senha, data_nasc, endereco) values(?, ?, ?, ?, ?)";
-    boolean ok = true;
     
-    
-            //PreparedStatement psmt = PreparedStatement(sql);
-            //psmt.setString(1, funcionario.getNome());
+          
          
     }
         
