@@ -14,8 +14,7 @@ public class Livro {
     private String genero;
     private String descricao;
 
-    public Livro(int id, String nome, String genero, String descricao) {
-        this.id = id;
+    public Livro(String nome, String genero, String descricao) {
         this.nome = nome;
         this.genero = genero;
         this.descricao = descricao;

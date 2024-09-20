@@ -13,8 +13,7 @@ public class Livro_Autor {
     private int livro_id;
     private int autor_id;
 
-    public Livro_Autor(int id, int livro_id, int autor_id) {
-        this.id = id;
+    public Livro_Autor(int livro_id, int autor_id) {
         this.livro_id = livro_id;
         this.autor_id = autor_id;
     }

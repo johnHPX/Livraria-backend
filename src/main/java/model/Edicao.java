@@ -18,8 +18,7 @@ public class Edicao {
     private String idioma;
     private int total_paginas;
 
-    public Edicao(int cod, String nome_edicao, int editora_id, int livro_id, int ano, int quantidade, String idioma, int total_paginas) {
-        this.cod = cod;
+    public Edicao(String nome_edicao, int editora_id, int livro_id, int ano, int quantidade, String idioma, int total_paginas) {
         this.nome_edicao = nome_edicao;
         this.editora_id = editora_id;
         this.livro_id = livro_id;
