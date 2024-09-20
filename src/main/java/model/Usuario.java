@@ -19,6 +19,8 @@ public class Usuario {
         this.devendo = devendo;
     }
 
+    public Usuario(){}
+
     public int getId() {
         return id;
     }

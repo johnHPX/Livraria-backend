@@ -2,7 +2,8 @@ import model.Usuario;
 import repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 
 public class TestUsuario {
 
@@ -21,4 +22,54 @@ public class TestUsuario {
         System.out.println("Sucesso!");
     }
 
+    @Test
+    public void testUpdate(){
+        UsuarioRepository userRepository = new UsuarioRepository();
+        usuario.setId(1);
+        usuario.setNome("Jonatas");
+        usuario.setCpf("61868307301");
+        usuario.setEndereço("Rua senador pompeu 315 Centro Crato");
+        usuario.setDataNasc("2004/03/08");
+        usuario.setQtdLivros(3);
+        usuario.setDevendo(true);
+        userRepository.alterarUsuario(usuario);
+        System.out.println("Sucesso!");
+    }
+
+    @Test
+    public void testDelete(){
+        UsuarioRepository userRepository = new UsuarioRepository();
+        userRepository.removerUsuario(2);
+        System.out.println("Sucesso!");
+    }
+
+    @Test
+    public void testSelect(){
+        UsuarioRepository userRepository = new UsuarioRepository();
+        ArrayList<Usuario> us =  userRepository.listarTodosUsuario();
+        System.out.println("=======================================");
+        for(Usuario u: us){
+            System.out.println(u.getId());
+            System.out.println(u.getNome());
+            System.out.println(u.getCpf());
+            System.out.println(u.getEndereço());
+            System.out.println(u.getDataNasc());
+            System.out.println(u.getQtdLivros());
+            System.out.println(u.isDevendo());
+            System.out.println("-----------------------------------");
+        }
+        System.out.println("=======================================");
+        System.out.println("Sucesso!");
+    }
+
+    @Test
+    public void TestManyInsert() {
+        UsuarioRepository ur = new UsuarioRepository();
+        ArrayList<Usuario> us = new ArrayList<Usuario>();
+        us.add(new Usuario("Roberto", "12334567910", "Juazeuiro do norte", "2004/02/20", 0, false));
+        us.add(new Usuario("Wallyson", "12334567910", "Juazeiro do norte", "1999/05/24", 5, true));
+
+        ur.criarVariosUsuarios(us);
+        System.out.println("Sucesso!");
+    }
 }
