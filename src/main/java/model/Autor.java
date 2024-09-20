@@ -17,6 +17,15 @@ public class Autor {
     /**
      * @return the id
      */
+    
+    
+    public Autor(int id, String nome, String bio, int ano_nasc) {
+        this.id = id;
+        this.nome = nome;
+        this.bio = bio;
+        this.ano_nasc = ano_nasc;
+    }
+
     public int getId() {
         return id;
     }

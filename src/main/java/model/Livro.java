@@ -14,6 +14,14 @@ public class Livro {
     private String genero;
     private String descricao;
 
+    public Livro(int id, String nome, String genero, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.genero = genero;
+        this.descricao = descricao;
+    }
+    
+    
     /**
      * @return the id
      */

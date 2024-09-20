@@ -12,4 +12,35 @@ public class Livro_Autor {
     private int id;
     private int livro_id;
     private int autor_id;
+
+    public Livro_Autor(int id, int livro_id, int autor_id) {
+        this.id = id;
+        this.livro_id = livro_id;
+        this.autor_id = autor_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getLivro_id() {
+        return livro_id;
+    }
+
+    public int getAutor_id() {
+        return autor_id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLivro_id(int livro_id) {
+        this.livro_id = livro_id;
+    }
+
+    public void setAutor_id(int autor_id) {
+        this.autor_id = autor_id;
+    }
+    
 }
