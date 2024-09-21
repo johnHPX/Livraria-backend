@@ -5,7 +5,7 @@ import repository.EditoraRepository;
 
 import java.util.ArrayList;
 
-public class TestEditora {
+class TestEditora {
 
     private Editora editora;
 

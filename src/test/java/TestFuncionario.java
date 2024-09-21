@@ -2,7 +2,6 @@ import model.Funcionario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.FuncionarioRepository;
-import repository.UsuarioRepository;
 
 import java.util.ArrayList;
 

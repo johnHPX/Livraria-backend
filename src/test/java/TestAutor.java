@@ -2,7 +2,6 @@ import model.Autor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.AutorRepository;
-import repository.UsuarioRepository;
 
 import java.util.ArrayList;
 

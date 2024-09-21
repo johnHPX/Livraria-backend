@@ -8,12 +8,14 @@ package model;
  *
  * @author roberts
  */
-public class Livro_Autor {
+public class LivroAutor {
     private int id;
     private int livro_id;
     private int autor_id;
 
-    public Livro_Autor(int livro_id, int autor_id) {
+    public LivroAutor(){}
+
+    public LivroAutor(int livro_id, int autor_id) {
         this.livro_id = livro_id;
         this.autor_id = autor_id;
     }
