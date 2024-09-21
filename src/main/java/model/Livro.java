@@ -19,6 +19,8 @@ public class Livro {
         this.genero = genero;
         this.descricao = descricao;
     }
+
+    public Livro(){}
     
     
     /**

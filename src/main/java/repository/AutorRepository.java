@@ -1,14 +1,11 @@
 package repository;
 
 import model.Autor;
-import util.DatasFormatadas;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AutorRepository {
-
-    DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
 
     public void criarAutor(Autor autor) {
         ConexaoBD conexao = new ConexaoBD();
