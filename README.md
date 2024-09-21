@@ -1,10 +1,7 @@
 # ProjetoPOO
-Um projeto para a disciplina de POO1 do curso de Sistemas de informação do IFCE Campus Crato.
-
-<img src="docs/livraria_logico.png">
 
 <h2>Problemática: Livraria </h2> 
-<p>Uma livraria precisa desenvolver um sistema para agilizar o
+<p style="font-family: Arial;">Uma livraria precisa desenvolver um sistema para agilizar o
 processo de empréstimo de seus livros.
 Para que um usuário possa alugar um ou até cinco livros, é necessário
 que ele faça um cadastro antecipado. Este cadastro deve incluir o
@@ -29,3 +26,5 @@ pode ter várias edições por diferentes editoras.
 Um autor pode escrever diversos livros individualmente e também
 participar de várias colaborações literárias com outros autores. Cada
 autor tem seu nome, sua biografia e sua data de nascimento. </p>
+
+<img src="docs/livraria_logico.png">
