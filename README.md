@@ -28,3 +28,4 @@ participar de várias colaborações literárias com outros autores. Cada
 autor tem seu nome, sua biografia e sua data de nascimento. </p>
 
 <img src="docs/livraria_logico.png">
+<img src="docs/livraria_conceitual.png">
