@@ -1,13 +1,12 @@
 import model.Usuario;
 import repository.UsuarioRepository;
-import util.DatasFormatadas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class TestUsuario {
+class TestUsuario {
 
     private Usuario usuario;
 

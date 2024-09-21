@@ -18,7 +18,8 @@ public class Autor {
      * @return the id
      */
     
-    
+    public Autor(){}
+
     public Autor(String nome, String bio, int ano_nasc) {
         this.nome = nome;
         this.bio = bio;

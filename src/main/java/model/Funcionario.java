@@ -20,7 +20,8 @@ public class Funcionario {
     /**
      * @return the id
      */
-    
+
+    public Funcionario(){}
     
     public Funcionario(String nome, String cpf, String senha, String data_nasc, String endereco) {
         this.nome = nome;
