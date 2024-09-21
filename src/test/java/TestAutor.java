@@ -3,6 +3,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.AutorRepository;
 
+import java.util.ArrayList;
+
 class TestAutor {
 
     private Autor autor;
@@ -10,9 +12,9 @@ class TestAutor {
     @BeforeEach
     public void setUp(){
         autor = new Autor();
-        autor.setNome("J.K Rowling");
-        autor.setBio("Joanne \"Jo\" Rowling OBE FRSL, mais conhecida como J. K. Rowling, é uma escritora, roteirista e produtora cinematográfica britânica, notória por escrever a série de livros Harry Potter.");
-        autor.setAno_nasc(1965);
+        autor.setNome("Robert Cecil Martin");
+        autor.setBio("Robert Cecil Martin, também conhecido como \"Uncle Bob\", é uma grande personalidade da comunidade de desenvolvimento de software, métodos ágeis e software craftsmanship, atuando na área desde 1970. Atualmente é consultor internacional e autor de vários livros abordando o tema.");
+        autor.setAno_nasc(1952);
     }
 
     @Test
@@ -20,6 +22,23 @@ class TestAutor {
         AutorRepository ar = new AutorRepository();
         ar.criarAutor(autor);
         System.out.println("Sucesso!");
+    }
+
+    @Test
+    public void TestSelect(){
+        AutorRepository ar = new AutorRepository();
+        ArrayList<Autor> autores = ar.listarTodosAutor();
+        System.out.println("=======================================");
+        for(Autor autor:autores){
+            System.out.println("ID: "+autor.getId());
+            System.out.println("NOME: "+autor.getNome());
+            System.out.println("BIO: "+autor.getBio());
+            System.out.println("ANO_NASC: "+autor.getAno_nasc());
+            System.out.println("------------------------------------");
+        }
+        System.out.println("=======================================");
+
+        System.out.println("Total: "+autores.size());
     }
 
 }

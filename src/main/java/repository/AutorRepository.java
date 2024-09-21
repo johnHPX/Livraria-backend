@@ -1,12 +1,12 @@
 package repository;
 
 import model.Autor;
-import model.Funcionario;
 import util.DatasFormatadas;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class AutorRepository {
 
@@ -34,35 +34,33 @@ public class AutorRepository {
 
     }
 
-//    public ArrayList<Autor> listarTodosAutor(){
-//        ConexaoBD conexaoBD = new ConexaoBD();
-//        ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
-//        try{
-//            conexaoBD.connectar();
-//            String sql = "SELECT * FROM funcionario";
-//            Statement stmt = conexaoBD.conn.createStatement();
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while(rs.next()){
-//                Funcionario f = new Funcionario();
-//                f.setId(rs.getInt("ID"));
-//                f.setNome(rs.getString("NOME"));
-//                f.setCpf(rs.getString("CPF"));
-//                f.setSenha(rs.getString("SENHA"));
-//                f.setData_nasc(rs.getString("DATA_NASC"));
-//                f.setEndereco(rs.getString("ENDERECO"));
-//                funcionarios.add(f);
-//            }
-//
-//            rs.close();
-//            stmt.close();
-//
-//        }catch (SQLException e){
-//            System.err.println(e.getMessage());
-//        }finally {
-//            conexaoBD.fecharConexao();
-//        }
-//        return funcionarios;
-//    }
+    public ArrayList<Autor> listarTodosAutor(){
+        ConexaoBD conexaoBD = new ConexaoBD();
+        ArrayList<Autor> autores = new ArrayList<Autor>();
+        try{
+            conexaoBD.connectar();
+            String sql = "SELECT * FROM autor";
+            Statement stmt = conexaoBD.conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Autor a = new Autor();
+                a.setId(rs.getInt("ID"));
+                a.setNome(rs.getString("NOME"));
+                a.setBio(rs.getString("BIO"));
+                a.setAno_nasc(rs.getInt("ANO_NASC"));
+                autores.add(a);
+            }
+
+            rs.close();
+            stmt.close();
+
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }finally {
+            conexaoBD.fecharConexao();
+        }
+        return autores;
+    }
 
 //    public void alterarFuncionario(Funcionario funcionario) {
 //        ConexaoBD conexaoBD = new ConexaoBD();
