@@ -2,6 +2,7 @@ import model.Autor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.AutorRepository;
+import repository.UsuarioRepository;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,24 @@ class TestAutor {
         System.out.println("=======================================");
 
         System.out.println("Total: "+autores.size());
+    }
+
+    @Test
+    public void testUpdate(){
+        AutorRepository ar = new AutorRepository();
+        autor.setId(3);
+        autor.setNome("teste");
+        autor.setBio("isso é uma biografia");
+        autor.setAno_nasc(1931);
+        ar.alterarAutor(autor);
+        System.out.println("Sucesso!");
+    }
+
+    @Test
+    public void testDelete(){
+        AutorRepository ar = new AutorRepository();
+        ar.removerAutor(3);
+        System.out.println("Sucesso!");
     }
 
 }
