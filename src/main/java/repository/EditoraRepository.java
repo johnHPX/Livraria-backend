@@ -1,6 +1,6 @@
 package repository;
 
-import model.Autor;
+import model.Editora;
 import model.Livro;
 
 import java.sql.PreparedStatement;
@@ -9,17 +9,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class LivroRepository {
+public class EditoraRepository {
 
-    public void criarLivro(Livro livro){
+    public void criarEditora(Editora editora){
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
-            String sql = "INSERT INTO livro (NOME, GENERO, DESCRICAO) VALUES (?,?,?)";
+            String sql = "INSERT INTO editora (NOME, CNPJ) VALUES (?,?)";
             PreparedStatement pstmt = conexaoBD.conn.prepareStatement(sql);
-            pstmt.setString(1, livro.getNome());
-            pstmt.setString(2, livro.getGenero());
-            pstmt.setString(3, livro.getDescricao());
+            pstmt.setString(1, editora.getNome());
+            pstmt.setString(2, editora.getCnpj());
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -30,21 +29,20 @@ public class LivroRepository {
         }
     }
 
-    public ArrayList<Livro> listarTodosLivros(){
+    public ArrayList<Editora> listarTodosEditora(){
         ConexaoBD conexaoBD = new ConexaoBD();
-        ArrayList<Livro> livros = new ArrayList<Livro>();
+        ArrayList<Editora> editoras = new ArrayList<Editora>();
         try{
             conexaoBD.connectar();
-            String sql = "SELECT * FROM livro";
+            String sql = "SELECT * FROM editora";
             Statement stmt = conexaoBD.conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
-                Livro l = new Livro();
-                l.setId(rs.getInt("ID"));
-                l.setNome(rs.getString("NOME"));
-                l.setGenero(rs.getString("GENERO"));
-                l.setDescricao(rs.getString("DESCRICAO"));
-                livros.add(l);
+                Editora e = new Editora();
+                e.setId(rs.getInt("ID"));
+                e.setNome(rs.getString("NOME"));
+                e.setCnpj(rs.getString("CNPJ"));
+                editoras.add(e);
             }
 
             rs.close();
@@ -56,20 +54,19 @@ public class LivroRepository {
             conexaoBD.fecharConexao();
         }
 
-        return livros;
+        return editoras;
     }
 
 
-    public void alterarLivro(Livro livro) {
+    public void alterarEditora(Editora editora) {
         ConexaoBD conexaoBD = new ConexaoBD();
         try {
             conexaoBD.connectar();
-            String sqlText = "UPDATE livro SET NOME = ?, GENERO = ?, DESCRICAO = ? WHERE ID = ?";
+            String sqlText = "UPDATE editora SET NOME = ?, CNPJ = ?  WHERE ID = ?";
             PreparedStatement pstmt = conexaoBD.conn.prepareStatement(sqlText);
-            pstmt.setString(1, livro.getNome());
-            pstmt.setString(2, livro.getGenero());
-            pstmt.setString(3, livro.getDescricao());
-            pstmt.setInt(4, livro.getId());
+            pstmt.setString(1, editora.getNome());
+            pstmt.setString(2, editora.getCnpj());
+            pstmt.setInt(3, editora.getId());
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -81,11 +78,11 @@ public class LivroRepository {
         }
     }
 
-    public void removerLivro(int id){
+    public void removerEditora(int id){
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             conexaoDB.connectar();
-            String sql = "DELETE FROM livro WHERE ID = ?";
+            String sql = "DELETE FROM editora WHERE ID = ?";
 
             PreparedStatement pstmt = conexaoDB.conn.prepareStatement(sql);
             pstmt.setInt(1, id);

@@ -36,4 +36,22 @@ class TestLivro {
         System.out.println("===================================");
     }
 
+    @Test
+    void TestUpdate(){
+        LivroRepository lr = new LivroRepository();
+        livro.setId(2);
+        livro.setNome("nome alterado");
+        livro.setGenero("alterado");
+        livro.setDescricao("desc alterado");
+        lr.alterarLivro(livro);
+        System.out.println("Sucesso!");
+    }
+
+    @Test
+    void TestDelete(){
+        LivroRepository lr = new LivroRepository();
+        lr.removerLivro(2);
+        System.out.println("Sucesso!");
+    }
+
 }
