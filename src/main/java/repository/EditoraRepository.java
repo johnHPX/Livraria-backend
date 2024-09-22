@@ -1,7 +1,6 @@
 package repository;
 
 import model.Editora;
-import model.Livro;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

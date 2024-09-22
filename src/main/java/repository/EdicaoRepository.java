@@ -13,11 +13,12 @@ public class EdicaoRepository {
 
     public void criarEdicao(Edicao edicao){
         ConexaoBD conexaoBD = new ConexaoBD();
+        Util util = new Util();
         try{
             conexaoBD.connectar();
             String sql = "INSERT INTO edicao (COD, NOME, EDITORA_FK, LIVRO_FK, ANO, QUANTIDADE, IDIOMA, TOTAL_PAG) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conexaoBD.conn.prepareStatement(sql);
-            pstmt.setInt(1, Util.GerarNumeroAleatorio());
+            pstmt.setInt(1, util.GerarNumeroAleatorio());
             pstmt.setString(2, edicao.getNome_edicao());
             pstmt.setInt(3, edicao.getEditora_id());
             pstmt.setInt(4, edicao.getLivro_id());

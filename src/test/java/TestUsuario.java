@@ -29,7 +29,7 @@ class TestUsuario {
         usuario.setId(1);
         usuario.setNome("Jonatas");
         usuario.setCpf("1223234");
-        usuario.setEndereço("Jardim");
+        usuario.setEndereco("Jardim");
         usuario.setDataNasc("2000/08/12");
         usuario.setQtdLivros(3);
         usuario.setDevendo(true);
@@ -53,7 +53,7 @@ class TestUsuario {
             System.out.println(u.getId());
             System.out.println(u.getNome());
             System.out.println(u.getCpf());
-            System.out.println(u.getEndereço());
+            System.out.println(u.getEndereco());
             System.out.println(u.getDataNasc());
             System.out.println(u.getQtdLivros());
             System.out.println(u.isDevendo());

@@ -30,7 +30,6 @@ public class ConexaoBD {
         } catch (SQLException e) {
             System.out.println("Erro ao fechar a conexão: " + e.getMessage());
         }
-
     }
 
 }

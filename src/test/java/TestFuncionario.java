@@ -30,7 +30,7 @@ class TestFuncionario {
             System.out.println(funcionario.getNome());
             System.out.println(funcionario.getCpf());
             System.out.println(funcionario.getSenha());
-            System.out.println(funcionario.getData_nasc());
+            System.out.println(funcionario.getDataNasc());
             System.out.println(funcionario.getEndereco());
         }
         System.out.println("Sucesso!");
@@ -44,7 +44,7 @@ class TestFuncionario {
         funcionario.setCpf("123123");
         funcionario.setSenha("123456");
         funcionario.setEndereco("Jardim");
-        funcionario.setData_nasc("2000/2/11");
+        funcionario.setDataNasc("2000/02/11");
         funcionarioRepository.alterarFuncionario(funcionario);
         System.out.println("Sucesso!");
     }

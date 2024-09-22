@@ -6,7 +6,7 @@ package repository;
 
 import java.sql.PreparedStatement;
 import model.Funcionario;
-import util.DatasFormatadas;
+import util.Util;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -19,9 +19,9 @@ import java.util.ArrayList;
  */
 public class FuncionarioRepository {
 
-    DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
     
     public void criarFuncionario(Funcionario funcionario) {
+        Util util = new Util();
         try {
             ConexaoBD conexao = new ConexaoBD();
             conexao.connectar();
@@ -31,7 +31,10 @@ public class FuncionarioRepository {
             pstmt.setString(1, funcionario.getNome());
             pstmt.setString(2, funcionario.getCpf());
             pstmt.setString(3, funcionario.getSenha());
-            pstmt.setString(4, funcionario.getData_nasc());
+
+            Date sqlDate = util.ConverterStrintParaDate(funcionario.getDataNasc());
+
+            pstmt.setDate(4, sqlDate);
             pstmt.setString(5, funcionario.getEndereco());
             pstmt.executeUpdate();
 
@@ -47,6 +50,7 @@ public class FuncionarioRepository {
     public ArrayList<Funcionario> listarTodosFuncionarios(){
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        Util util = new Util();
         try{
             conexaoBD.connectar();
             String sql = "SELECT * FROM funcionario";
@@ -58,7 +62,10 @@ public class FuncionarioRepository {
                 f.setNome(rs.getString("NOME"));
                 f.setCpf(rs.getString("CPF"));
                 f.setSenha(rs.getString("SENHA"));
-                f.setData_nasc(rs.getString("DATA_NASC"));
+
+                String dataNasc = util.ConverterDateParaString(rs.getDate("DATA_NASC"));
+
+                f.setDataNasc(dataNasc);
                 f.setEndereco(rs.getString("ENDERECO"));
                 funcionarios.add(f);
             }
@@ -76,6 +83,7 @@ public class FuncionarioRepository {
 
     public void alterarFuncionario(Funcionario funcionario) {
         ConexaoBD conexaoBD = new ConexaoBD();
+        Util util = new Util();
         try {
             String sqlText = "UPDATE funcionario SET NOME = ?, CPF = ?, SENHA = ?, ENDERECO = ?, DATA_NASC = ? WHERE ID = ?";
             conexaoBD.connectar();
@@ -86,9 +94,7 @@ public class FuncionarioRepository {
             pstmt.setString(3, funcionario.getSenha());
             pstmt.setString(4, funcionario.getEndereco());
 
-            // Conveting string to Date
-            LocalDate localDate = LocalDate.parse(funcionario.getData_nasc(), DateTimeFormatter.ofPattern(dataUSA.getValor()));
-            Date sqlDate = Date.valueOf(localDate);
+            Date sqlDate = util.ConverterStrintParaDate(funcionario.getDataNasc());
 
             pstmt.setDate(5, sqlDate);
             pstmt.executeUpdate();

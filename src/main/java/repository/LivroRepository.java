@@ -1,6 +1,4 @@
 package repository;
-
-import model.Autor;
 import model.Livro;
 
 import java.sql.PreparedStatement;

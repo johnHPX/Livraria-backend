@@ -1,115 +1,71 @@
 package model;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author roberts
- */
-public class Funcionario {
-    private int id;
-    private String nome;
-    private String cpf;
+public final class Funcionario  extends Pessoa{
     private String senha;
-    private String data_nasc;
-    private String endereco;
 
-    /**
-     * @return the id
-     */
-
-    public Funcionario(){}
+    public Funcionario(){
+        super();
+    }
     
     public Funcionario(String nome, String cpf, String senha, String data_nasc, String endereco) {
-        this.nome = nome;
-        this.cpf = cpf;
+        super(nome, cpf, data_nasc, endereco);
         this.senha = senha;
-        this.data_nasc = data_nasc;
-        this.endereco = endereco;
     }
 
-    public int getId() {
-        return id;
+    public int getId(){
+        return super.id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id){
+        super.id = id;
     }
 
-    /**
-     * @return the nome
-     */
+    @Override
     public String getNome() {
-        return nome;
+        return super.getNome();
     }
 
-    /**
-     * @param nome the nome to set
-     */
+    @Override
     public void setNome(String nome) {
-        this.nome = nome;
+        super.setNome(nome);
     }
 
-    /**
-     * @return the cpf
-     */
+    @Override
     public String getCpf() {
-        return cpf;
+        return super.getCpf();
     }
 
-    /**
-     * @param cpf the cpf to set
-     */
+    @Override
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        super.setCpf(cpf);
     }
 
-    /**
-     * @return the senha
-     */
+    @Override
+    public String getDataNasc() {
+        return super.getDataNasc();
+    }
+
+    @Override
+    public void setDataNasc(String dataNasc) {
+        super.setDataNasc(dataNasc);
+    }
+
+    @Override
+    public String getEndereco() {
+        return super.getEndereco();
+    }
+
+    @Override
+    public void setEndereco(String endereco) {
+        super.setEndereco(endereco);
+    }
+
     public String getSenha() {
         return senha;
     }
 
-    /**
-     * @param senha the senha to set
-     */
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    /**
-     * @return the data_nasc
-     */
-    public String getData_nasc() {
-        return data_nasc;
-    }
-
-    /**
-     * @param data_nasc the data_nasc to set
-     */
-    public void setData_nasc(String data_nasc) {
-        this.data_nasc = data_nasc;
-    }
-
-    /**
-     * @return the endereco
-     */
-    public String getEndereco() {
-        return endereco;
-    }
-
-    /**
-     * @param endereco the endereco to set
-     */
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
 }

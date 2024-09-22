@@ -2,20 +2,20 @@ package repository;
 
 import model.Usuario;
 import util.DatasFormatadas;
+import util.Util;
 
+import java.rmi.server.UID;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import static util.DatasFormatadas.PADRAO_USA;
 
 public class UsuarioRepository {
 
-    private DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
-
     public void criarUsuario(Usuario novoUsuario){
+        Util util = new Util();
         try {
             String sql = "INSERT INTO usuario (NOME, CPF, ENDERECO, DATA_NASC, QTD_LIVROS, ESTA_DEVENDO) VALUES (?,?,?,?,?,?)";
             ConexaoBD conexao = new ConexaoBD();
@@ -25,11 +25,9 @@ public class UsuarioRepository {
             PreparedStatement pstmt = conexao.conn.prepareStatement(sql);
             pstmt.setString(1, novoUsuario.getNome());
             pstmt.setString(2, novoUsuario.getCpf());
-            pstmt.setString(3, novoUsuario.getEndereço());
+            pstmt.setString(3, novoUsuario.getEndereco());
 
-            // Conveting string to Date
-            LocalDate localDate = LocalDate.parse(novoUsuario.getDataNasc(), DateTimeFormatter.ofPattern(dataUSA.getValor()));
-            Date sqlDate = Date.valueOf(localDate);
+            Date sqlDate = util.ConverterStrintParaDate(novoUsuario.getDataNasc());
 
             pstmt.setDate(4, sqlDate);
             pstmt.setInt(5, novoUsuario.getQtdLivros());
@@ -52,6 +50,7 @@ public class UsuarioRepository {
 
     public void alterarUsuario(Usuario usuario) {
         ConexaoBD conexaoBD = new ConexaoBD();
+        Util util = new Util();
         try {
             String sqlText = "UPDATE usuario SET NOME = ?, CPF = ?, ENDERECO = ?, DATA_NASC = ?, QTD_LIVROS= ?, ESTA_DEVENDO = ? WHERE ID = ?";
             conexaoBD.connectar();
@@ -59,11 +58,9 @@ public class UsuarioRepository {
             pstmt.setInt(7, usuario.getId());
             pstmt.setString(1, usuario.getNome());
             pstmt.setString(2, usuario.getCpf());
-            pstmt.setString(3, usuario.getEndereço());
+            pstmt.setString(3, usuario.getEndereco());
 
-            // Conveting string to Date
-            LocalDate localDate = LocalDate.parse(usuario.getDataNasc(), DateTimeFormatter.ofPattern(dataUSA.getValor()));
-            Date sqlDate = Date.valueOf(localDate);
+            Date sqlDate = util.ConverterStrintParaDate(usuario.getDataNasc());
 
             pstmt.setDate(4, sqlDate);
             pstmt.setInt(5, usuario.getQtdLivros());
@@ -101,6 +98,7 @@ public class UsuarioRepository {
     public ArrayList<Usuario> listarTodosUsuario(){
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        Util util = new Util();
         try {
             String sql = "SELECT * FROM usuario";
             conexaoBD.connectar();
@@ -112,11 +110,9 @@ public class UsuarioRepository {
                 u.setId(rs.getInt("ID"));
                 u.setNome(rs.getString("NOME"));
                 u.setCpf(rs.getString("CPF"));
-                u.setEndereço(rs.getString("ENDERECO"));
+                u.setEndereco(rs.getString("ENDERECO"));
 
-                // conveter de string para date
-                DateFormat df = new SimpleDateFormat(dataUSA.getValor());
-                String dataNasc = df.format(rs.getDate("DATA_NASC"));
+                String dataNasc = util.ConverterDateParaString(rs.getDate("DATA_NASC"));
 
                 u.setDataNasc(dataNasc);
                 u.setQtdLivros(rs.getInt("QTD_LIVROS"));

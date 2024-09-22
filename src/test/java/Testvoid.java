@@ -7,13 +7,15 @@ public class Testvoid {
 
     @Test
     void TestNumerosAleatorios(){
-        int randomNumber = Util.GerarNumeroAleatorio();
+        Util util = new Util();
+        int randomNumber = util.GerarNumeroAleatorio();
         System.out.println("Número aleatório: " + randomNumber);
     }
 
     @Test
     public void TestConverteData() {
-        Date nasc = Util.ConverterStrintParaDate("15/01/2004");
+        Util util = new Util();
+        Date nasc = util.ConverterStrintParaDate("15/01/2004");
         System.out.println(nasc);
 
     }

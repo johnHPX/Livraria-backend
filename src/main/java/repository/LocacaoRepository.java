@@ -1,6 +1,5 @@
 package repository;
 
-import model.Edicao;
 import model.Locacao;
 
 import java.sql.PreparedStatement;
@@ -16,6 +15,7 @@ public class LocacaoRepository {
 
     public void criarLocacao(Locacao locacao){
         ConexaoBD conexaoBD = new ConexaoBD();
+        Util util = new Util();
         try{
             conexaoBD.connectar();
             String sql = "INSERT INTO locacao (USUARIO_FK, FUNCIONARIO_FK, EDICAO_COD, PRAZO, DATA_LOCACAO, ANO, ABERTA) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -24,10 +24,10 @@ public class LocacaoRepository {
             pstmt.setInt(2, locacao.getFuncionario_id());
             pstmt.setInt(3, locacao.getEdicao_cod());
 
-            Date prazo = Util.ConverterStrintParaDate(locacao.getPrazo());
+            Date prazo = util.ConverterStrintParaDate(locacao.getPrazo());
             pstmt.setDate(4, prazo);
 
-            Date dataLocacao = Util.ConverterStrintParaDate(locacao.getData_locacao());
+            Date dataLocacao = util.ConverterStrintParaDate(locacao.getData_locacao());
             pstmt.setDate(5, dataLocacao);
 
 
@@ -47,6 +47,7 @@ public class LocacaoRepository {
     public ArrayList<Locacao> listarTodasLocacoes(){
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Locacao> locacoes = new ArrayList<Locacao>();
+        Util util = new Util();
         try{
             conexaoBD.connectar();
             String sql = "SELECT * FROM locacao";
@@ -59,10 +60,10 @@ public class LocacaoRepository {
                 locacao.setFuncionario_id(rs.getInt("FUNCIONARIO_FK"));
                 locacao.setEdicao_cod(rs.getInt("EDICAO_COD"));
 
-                String prazo = Util.ConverterDateParaString(rs.getDate("PRAZO"));
+                String prazo = util.ConverterDateParaString(rs.getDate("PRAZO"));
                 locacao.setPrazo(prazo);
 
-                String dataLocacao = Util.ConverterDateParaString(rs.getDate("DATA_LOCACAO"));
+                String dataLocacao = util.ConverterDateParaString(rs.getDate("DATA_LOCACAO"));
                 locacao.setData_locacao(dataLocacao);
 
                 locacao.setAno(rs.getInt("ANO"));
@@ -83,6 +84,8 @@ public class LocacaoRepository {
 
     public void atualizarLocacao(Locacao locacao){
         ConexaoBD conexaoBD = new ConexaoBD();
+        Util util = new Util();
+
         try{
             conexaoBD.connectar();
             String sql = "UPDATE locacao SET USUARIO_FK = ?, FUNCIONARIO_FK = ?, EDICAO_COD = ?, PRAZO = ?, DATA_LOCACAO = ?, ANO = ?, ABERTA = ? WHERE ID = ?";
@@ -91,10 +94,10 @@ public class LocacaoRepository {
             pstmt.setInt(2, locacao.getFuncionario_id());
             pstmt.setInt(3, locacao.getEdicao_cod());
 
-            Date prazo = Util.ConverterStrintParaDate(locacao.getPrazo());
+            Date prazo = util.ConverterStrintParaDate(locacao.getPrazo());
             pstmt.setDate(4, prazo);
 
-            Date dataLocacao = Util.ConverterStrintParaDate(locacao.getData_locacao());
+            Date dataLocacao = util.ConverterStrintParaDate(locacao.getData_locacao());
             pstmt.setDate(5, dataLocacao);
 
 
