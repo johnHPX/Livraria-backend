@@ -28,9 +28,9 @@ class TestUsuario {
         UsuarioRepository userRepository = new UsuarioRepository();
         usuario.setId(1);
         usuario.setNome("Jonatas");
-        usuario.setCpf("61868307301");
-        usuario.setEndereço("Rua senador pompeu 315 Centro Crato");
-        usuario.setDataNasc("2004/03/08");
+        usuario.setCpf("1223234");
+        usuario.setEndereço("Jardim");
+        usuario.setDataNasc("2000/08/12");
         usuario.setQtdLivros(3);
         usuario.setDevendo(true);
         userRepository.alterarUsuario(usuario);
@@ -73,13 +73,5 @@ class TestUsuario {
         ur.criarVariosUsuarios(us);
         System.out.println("Sucesso!");
     }
-    
-    @Test
-    public void TestConverteData() {
-        UsuarioRepository dt = new UsuarioRepository();
-        
-        Date nasc = dt.converteData("15/01/2004");
-        System.out.println(nasc);
-        
-    }
+
 }

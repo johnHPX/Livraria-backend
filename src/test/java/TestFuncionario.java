@@ -41,10 +41,10 @@ class TestFuncionario {
         FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
         funcionario.setId(1);
         funcionario.setNome("Jonatas");
-        funcionario.setCpf("61868307301");
+        funcionario.setCpf("123123");
         funcionario.setSenha("123456");
-        funcionario.setEndereco("Rua senador pompeu 315 Centro Crato");
-        funcionario.setData_nasc("2004/03/08");
+        funcionario.setEndereco("Jardim");
+        funcionario.setData_nasc("2000/2/11");
         funcionarioRepository.alterarFuncionario(funcionario);
         System.out.println("Sucesso!");
     }

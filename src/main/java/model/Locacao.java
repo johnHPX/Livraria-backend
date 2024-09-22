@@ -28,6 +28,8 @@ public class Locacao {
         this.aberta = aberta;
     }
 
+    public Locacao(){}
+
     public int getId() {
         return id;
     }

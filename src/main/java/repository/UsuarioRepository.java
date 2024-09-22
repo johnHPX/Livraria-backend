@@ -13,7 +13,7 @@ import static util.DatasFormatadas.PADRAO_USA;
 
 public class UsuarioRepository {
 
-    DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
+    private DatasFormatadas dataUSA = DatasFormatadas.PADRAO_USA;
 
     public void criarUsuario(Usuario novoUsuario){
         try {
@@ -79,16 +79,7 @@ public class UsuarioRepository {
         }
 
     }
-    public Date converteData(String data_nao_formatada) {
-        ConexaoBD conexao = new ConexaoBD();
-        conexao.connectar();
-        LocalDate localDate = LocalDate.parse(data_nao_formatada, DateTimeFormatter.ofPattern(PADRAO_USA.getValor()));
-        System.out.println("LocalDate: " + localDate );
-            Date sqlData = Date.valueOf(localDate);
-            System.out.println("Date: " +  sqlData );
-            conexao.fecharConexao();
-            return sqlData;
-    }
+
     public void removerUsuario(int id){
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
