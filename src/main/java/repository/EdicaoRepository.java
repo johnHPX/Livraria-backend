@@ -1,6 +1,8 @@
 package repository;
 
 import model.Edicao;
+import util.TratamentoException;
+import util.TratarErros;
 import util.Util;
 
 import java.sql.PreparedStatement;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 
 public class EdicaoRepository {
 
-    public void criarEdicao(Edicao edicao){
+    public void criarEdicao(Edicao edicao) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         Util util = new Util();
         try{
@@ -31,13 +33,13 @@ public class EdicaoRepository {
             pstmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public ArrayList<Edicao> listarTodasEdicao(){
+    public ArrayList<Edicao> listarTodasEdicao() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Edicao> edicoes = new ArrayList<Edicao>();
         try{
@@ -61,7 +63,7 @@ public class EdicaoRepository {
             rs.close();
             stmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
@@ -69,7 +71,7 @@ public class EdicaoRepository {
         return edicoes;
     }
 
-    public void atualizarEdicao(Edicao edicao){
+    public void atualizarEdicao(Edicao edicao) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
@@ -88,13 +90,13 @@ public class EdicaoRepository {
             pstmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerEdicao(int cod){
+    public void removerEdicao(int cod) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
@@ -106,7 +108,7 @@ public class EdicaoRepository {
             pstmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }

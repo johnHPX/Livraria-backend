@@ -16,44 +16,60 @@ class TestFuncionario {
 
     @Test
     public void testInsertInto(){
-        FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-        funcionarioRepository.criarFuncionario(funcionario);
-        System.out.println("Sucesso!");
+        try{
+            FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+            funcionarioRepository.criarFuncionario(funcionario);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
     @Test
     public void testSelectALL(){
-        FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-        ArrayList<Funcionario> funcionarios = funcionarioRepository.listarTodosFuncionarios();
-        for(Funcionario funcionario: funcionarios){
-            System.out.println(funcionario.getId());
-            System.out.println(funcionario.getNome());
-            System.out.println(funcionario.getCpf());
-            System.out.println(funcionario.getSenha());
-            System.out.println(funcionario.getDataNasc());
-            System.out.println(funcionario.getEndereco());
+        try{
+            FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+            ArrayList<Funcionario> funcionarios = funcionarioRepository.listarTodosFuncionarios();
+            for(Funcionario funcionario: funcionarios){
+                System.out.println(funcionario.getId());
+                System.out.println(funcionario.getNome());
+                System.out.println(funcionario.getCpf());
+                System.out.println(funcionario.getSenha());
+                System.out.println(funcionario.getDataNasc());
+                System.out.println(funcionario.getEndereco());
+            }
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
         }
-        System.out.println("Sucesso!");
     }
 
     @Test
     public void testUpdate(){
-        FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-        funcionario.setId(1);
-        funcionario.setNome("Jonatas");
-        funcionario.setCpf("123123");
-        funcionario.setSenha("123456");
-        funcionario.setEndereco("Jardim");
-        funcionario.setDataNasc("2000/02/11");
-        funcionarioRepository.alterarFuncionario(funcionario);
-        System.out.println("Sucesso!");
+        try{
+            FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+            funcionario.setId(1);
+            funcionario.setNome("Jonatas");
+            funcionario.setCpf("123123");
+            funcionario.setSenha("123456");
+            funcionario.setEndereco("Jardim");
+            funcionario.setDataNasc("2000/02/11");
+            funcionarioRepository.alterarFuncionario(funcionario);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
     @Test
     public void testDelete(){
-        FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-        funcionarioRepository.removerFuncionario(1);
-        System.out.println("Sucesso!");
+        try{
+            FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+            funcionarioRepository.removerFuncionario(1);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
 }

@@ -1,13 +1,15 @@
 package repository;
 
 import model.Autor;
+import util.TratamentoException;
+import util.TratarErros;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AutorRepository {
 
-    public void criarAutor(Autor autor) {
+    public void criarAutor(Autor autor) throws TratamentoException {
         ConexaoBD conexao = new ConexaoBD();
         try {
             conexao.connectar();
@@ -22,14 +24,14 @@ public class AutorRepository {
             pstmt.close();
         }
         catch (SQLException e) {
-            System.err.print(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexao.fecharConexao();
         }
 
     }
 
-    public ArrayList<Autor> listarTodosAutor(){
+    public ArrayList<Autor> listarTodosAutor() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Autor> autores = new ArrayList<Autor>();
         try{
@@ -50,14 +52,14 @@ public class AutorRepository {
             stmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
         return autores;
     }
 
-    public void alterarAutor(Autor autor) {
+    public void alterarAutor(Autor autor) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try {
             String sqlText = "UPDATE autor SET NOME = ?, BIO = ?, ANO_NASC = ? WHERE ID = ?";
@@ -72,13 +74,13 @@ public class AutorRepository {
             pstmt.close();
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerAutor(int id){
+    public void removerAutor(int id) throws TratamentoException {
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             String sql = "DELETE FROM autor WHERE ID = ?";
@@ -90,7 +92,7 @@ public class AutorRepository {
 
             pstmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoDB.fecharConexao();
         }

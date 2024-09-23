@@ -1,5 +1,7 @@
 package repository;
 import model.LivroAutor;
+import util.TratamentoException;
+import util.TratarErros;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 
 public class LivroAutorRepository {
 
-    public void criarLivroAutor(LivroAutor livroAutor){
+    public void criarLivroAutor(LivroAutor livroAutor) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
@@ -21,13 +23,13 @@ public class LivroAutorRepository {
 
             pstmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public ArrayList<LivroAutor> listarTodosLivroAutor(){
+    public ArrayList<LivroAutor> listarTodosLivroAutor() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<LivroAutor> array = new ArrayList<LivroAutor>();
         try{
@@ -47,7 +49,7 @@ public class LivroAutorRepository {
             stmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
@@ -56,7 +58,7 @@ public class LivroAutorRepository {
     }
 
 
-    public void alterarLivroAutor(LivroAutor livroAutor) {
+    public void alterarLivroAutor(LivroAutor livroAutor) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try {
             conexaoBD.connectar();
@@ -70,13 +72,13 @@ public class LivroAutorRepository {
             pstmt.close();
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerLivroAutor(int id){
+    public void removerLivroAutor(int id) throws TratamentoException {
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             conexaoDB.connectar();
@@ -88,7 +90,7 @@ public class LivroAutorRepository {
 
             pstmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoDB.fecharConexao();
         }

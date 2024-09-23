@@ -16,40 +16,56 @@ class TestEditora {
 
     @Test
     void TestInsertoInto(){
-        EditoraRepository er = new EditoraRepository();
-        er.criarEditora(editora);
-        System.out.println("Sucesso!");
+        try{
+            EditoraRepository er = new EditoraRepository();
+            er.criarEditora(editora);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
     @Test
     void TestSelect(){
-        EditoraRepository er = new EditoraRepository();
-        ArrayList<Editora> livros = er.listarTodosEditora();
-        System.out.println("===================================");
-        for (Editora l: livros){
-            System.out.println("ID: "+l.getId());
-            System.out.println("NOME: "+l.getNome());
-            System.out.println("CNPJ: "+l.getCnpj());
-            System.out.println("-------------------------------");
+        try{
+            EditoraRepository er = new EditoraRepository();
+            ArrayList<Editora> livros = er.listarTodosEditora();
+            System.out.println("===================================");
+            for (Editora l: livros){
+                System.out.println("ID: "+l.getId());
+                System.out.println("NOME: "+l.getNome());
+                System.out.println("CNPJ: "+l.getCnpj());
+                System.out.println("-------------------------------");
+            }
+            System.out.println("===================================");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
         }
-        System.out.println("===================================");
     }
 
     @Test
     void TestUpdate(){
-        EditoraRepository er = new EditoraRepository();
-        editora.setId(2);
-        editora.setNome("nome alterado");
-        editora.setCnpj("alterado");
-        er.alterarEditora(editora);
-        System.out.println("Sucesso!");
+        try{
+            EditoraRepository er = new EditoraRepository();
+            editora.setId(2);
+            editora.setNome("nome alterado");
+            editora.setCnpj("alterado");
+            er.alterarEditora(editora);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
     @Test
     void TestDelete(){
-        EditoraRepository er = new EditoraRepository();
-        er.removerEditora(2);
-        System.out.println("Sucesso!");
+        try{
+            EditoraRepository er = new EditoraRepository();
+            er.removerEditora(2);
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
     }
 
 }

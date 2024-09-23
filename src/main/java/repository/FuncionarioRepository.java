@@ -6,11 +6,10 @@ package repository;
 
 import java.sql.PreparedStatement;
 import model.Funcionario;
+import util.TratamentoException;
+import util.TratarErros;
 import util.Util;
-
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -20,10 +19,10 @@ import java.util.ArrayList;
 public class FuncionarioRepository {
 
     
-    public void criarFuncionario(Funcionario funcionario) {
+    public void criarFuncionario(Funcionario funcionario) throws TratamentoException {
+        ConexaoBD conexao = new ConexaoBD();
         Util util = new Util();
         try {
-            ConexaoBD conexao = new ConexaoBD();
             conexao.connectar();
             String sql = "INSERT INTO funcionario(NOME, CPF, SENHA, DATA_NASC, ENDERECO) values(?, ?, ?, ?, ?)";
 
@@ -39,15 +38,17 @@ public class FuncionarioRepository {
             pstmt.executeUpdate();
 
             pstmt.close();
+        } catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
             conexao.fecharConexao();
-        }
-        catch (SQLException e) {
-            System.err.print(e.getMessage());
         }
 
     }
 
-    public ArrayList<Funcionario> listarTodosFuncionarios(){
+    public ArrayList<Funcionario> listarTodosFuncionarios() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
         Util util = new Util();
@@ -73,15 +74,17 @@ public class FuncionarioRepository {
             rs.close();
             stmt.close();
 
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
-        }finally {
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
             conexaoBD.fecharConexao();
         }
         return funcionarios;
     }
 
-    public void alterarFuncionario(Funcionario funcionario) {
+    public void alterarFuncionario(Funcionario funcionario) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         Util util = new Util();
         try {
@@ -101,14 +104,16 @@ public class FuncionarioRepository {
 
             pstmt.close();
 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
         } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerFuncionario(int id){
+    public void removerFuncionario(int id) throws TratamentoException {
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             String sql = "DELETE FROM funcionario WHERE ID = ?";
@@ -119,9 +124,9 @@ public class FuncionarioRepository {
             pstmt.executeUpdate();
 
             pstmt.close();
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
-        }finally {
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } finally {
             conexaoDB.fecharConexao();
         }
     }

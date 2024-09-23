@@ -17,7 +17,6 @@ public class Testvoid {
         Util util = new Util();
         Date nasc = util.ConverterStrintParaDate("15/01/2004");
         System.out.println(nasc);
-
     }
 
 }

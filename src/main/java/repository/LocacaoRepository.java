@@ -9,11 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
 
+import util.TratamentoException;
+import util.TratarErros;
 import util.Util;
 
 public class LocacaoRepository {
 
-    public void criarLocacao(Locacao locacao){
+    public void criarLocacao(Locacao locacao) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         Util util = new Util();
         try{
@@ -37,14 +39,16 @@ public class LocacaoRepository {
 
             pstmt.close();
 
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
-        }finally {
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public ArrayList<Locacao> listarTodasLocacoes(){
+    public ArrayList<Locacao> listarTodasLocacoes() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Locacao> locacoes = new ArrayList<Locacao>();
         Util util = new Util();
@@ -73,16 +77,18 @@ public class LocacaoRepository {
 
             rs.close();
             stmt.close();
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
-        }finally {
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
             conexaoBD.fecharConexao();
         }
 
         return locacoes;
     }
 
-    public void atualizarLocacao(Locacao locacao){
+    public void atualizarLocacao(Locacao locacao) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         Util util = new Util();
 
@@ -108,14 +114,16 @@ public class LocacaoRepository {
 
             pstmt.close();
 
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
-        }finally {
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerLocacao(int id){
+    public void removerLocacao(int id) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
@@ -126,8 +134,8 @@ public class LocacaoRepository {
 
             pstmt.close();
 
-        }catch (SQLException e){
-            System.err.println(e.getMessage());
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }

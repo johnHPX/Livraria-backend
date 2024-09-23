@@ -1,5 +1,7 @@
 package repository;
 import model.Livro;
+import util.TratamentoException;
+import util.TratarErros;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 
 public class LivroRepository {
 
-    public void criarLivro(Livro livro){
+    public void criarLivro(Livro livro) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try{
             conexaoBD.connectar();
@@ -22,13 +24,13 @@ public class LivroRepository {
 
             pstmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public ArrayList<Livro> listarTodosLivros(){
+    public ArrayList<Livro> listarTodosLivros() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Livro> livros = new ArrayList<Livro>();
         try{
@@ -49,7 +51,7 @@ public class LivroRepository {
             stmt.close();
 
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoBD.fecharConexao();
         }
@@ -58,7 +60,7 @@ public class LivroRepository {
     }
 
 
-    public void alterarLivro(Livro livro) {
+    public void alterarLivro(Livro livro) throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         try {
             conexaoBD.connectar();
@@ -73,13 +75,13 @@ public class LivroRepository {
             pstmt.close();
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         } finally {
             conexaoBD.fecharConexao();
         }
     }
 
-    public void removerLivro(int id){
+    public void removerLivro(int id) throws TratamentoException {
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             conexaoDB.connectar();
@@ -91,7 +93,7 @@ public class LivroRepository {
 
             pstmt.close();
         }catch (SQLException e){
-            System.err.println(e.getMessage());
+            TratarErros.tratamentoDeErroBancoDeDados(e);
         }finally {
             conexaoDB.fecharConexao();
         }
