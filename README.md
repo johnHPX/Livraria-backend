@@ -1,4 +1,6 @@
-# ProjetoPOO
+# ProjetoPOO - BACKEND
+
+<p>Proposto pela nossa professora das disciplinas de Programação Orientada a Objetos 1 e Banco de Dados 1, este trabalho visa integrar os conhecimentos adquiridos durante o semestre. O projeto foi dividido entre frontend e backend. O frontend consiste em uma classe que interage com o usuário e utiliza este projeto como uma biblioteca para realizar operações no banco de dados, mas permanece totalmente separado do usuário final.</p>
 
 <h2>Problemática: Livraria </h2> 
 <p style="font-family: Arial;">Uma livraria precisa desenvolver um sistema para agilizar o
