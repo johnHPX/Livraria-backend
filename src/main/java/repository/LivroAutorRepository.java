@@ -78,14 +78,15 @@ public class LivroAutorRepository {
         }
     }
 
-    public void removerLivroAutor(int id) throws TratamentoException {
+    public void removerLivroAutor(int idLivro, int idAutor) throws TratamentoException {
         ConexaoBD conexaoDB = new ConexaoBD();
         try{
             conexaoDB.connectar();
-            String sql = "DELETE FROM livro_autor WHERE ID = ?";
+            String sql = "DELETE FROM livro_autor WHERE LIVRO_FK = ? AND AUTOR_FK = ?";
 
             PreparedStatement pstmt = conexaoDB.conn.prepareStatement(sql);
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, idLivro);
+            pstmt.setInt(2, idAutor);
             pstmt.executeUpdate();
 
             pstmt.close();

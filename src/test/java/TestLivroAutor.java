@@ -63,7 +63,7 @@ class TestLivroAutor {
     void TestDelete(){
         try{
             LivroAutorRepository lar = new LivroAutorRepository();
-            lar.removerLivroAutor(2);
+            lar.removerLivroAutor(2, 2);
             System.out.println("Sucesso!");
         }catch (Exception e){
             System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
