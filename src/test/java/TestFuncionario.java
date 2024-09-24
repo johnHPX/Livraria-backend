@@ -45,6 +45,40 @@ class TestFuncionario {
     }
 
     @Test
+    public void testLogin(){
+        try{
+            FuncionarioRepository fr = new FuncionarioRepository();
+            Funcionario funcionario = fr.LoginFuncionario("123123", "123456");
+            System.out.println(funcionario.getId());
+            System.out.println(funcionario.getNome());
+            System.out.println(funcionario.getCpf());
+            System.out.println(funcionario.getSenha());
+            System.out.println(funcionario.getDataNasc());
+            System.out.println(funcionario.getEndereco());
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
+    }
+
+    @Test
+    public void testLogin2(){
+        try{
+            FuncionarioRepository fr = new FuncionarioRepository();
+            Funcionario funcionario = fr.LoginFuncionario("123", "123456");
+            System.out.println(funcionario.getId());
+            System.out.println(funcionario.getNome());
+            System.out.println(funcionario.getCpf());
+            System.out.println(funcionario.getSenha());
+            System.out.println(funcionario.getDataNasc());
+            System.out.println(funcionario.getEndereco());
+            System.out.println("Sucesso!");
+        }catch (Exception e){
+            System.err.println("Error: "+e.getMessage()+"\nErro Especifico: "+e.getCause());
+        }
+    }
+
+    @Test
     public void testUpdate(){
         try{
             FuncionarioRepository funcionarioRepository = new FuncionarioRepository();

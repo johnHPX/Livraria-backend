@@ -48,6 +48,44 @@ public class FuncionarioRepository {
 
     }
 
+    public Funcionario LoginFuncionario(String cpf, String senha) throws TratamentoException {
+        ConexaoBD conexaoBD = new ConexaoBD();
+        Funcionario funcionario = new Funcionario();
+        Util util = new Util();
+        try{
+            conexaoBD.connectar();
+            String sql = "SELECT * FROM funcionario WHERE cpf = ? AND senha = ?";
+            PreparedStatement pstmt = conexaoBD.conn.prepareStatement(sql);
+            pstmt.setString(1, cpf);
+            pstmt.setString(2, senha);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                funcionario.setId(rs.getInt("ID"));
+                funcionario.setNome(rs.getString("NOME"));
+                funcionario.setCpf(rs.getString("CPF"));
+                funcionario.setSenha(rs.getString("SENHA"));
+
+                String dataNasc = util.ConverterDateParaString(rs.getDate("DATA_NASC"));
+
+                funcionario.setDataNasc(dataNasc);
+                funcionario.setEndereco(rs.getString("ENDERECO"));
+            }
+
+            rs.close();
+            pstmt.close();
+
+        }catch (SQLException e) {
+            TratarErros.tratamentoDeErroBancoDeDados(e);
+        } catch (IllegalArgumentException e){
+            TratarErros.tratamentoDeConversaoDeTipos(e);
+        } finally {
+            conexaoBD.fecharConexao();
+        }
+        return funcionario;
+    }
+
+
+
     public ArrayList<Funcionario> listarTodosFuncionarios() throws TratamentoException {
         ConexaoBD conexaoBD = new ConexaoBD();
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
